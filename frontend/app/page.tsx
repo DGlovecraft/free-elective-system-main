@@ -91,10 +91,6 @@ export default function LoginPage() {
     process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
     "";
 
-  const API_URL =
-    process.env.NEXT_PUBLIC_API_URL ||
-    "http://127.0.0.1:8000";
-
   // ==========================================
   // Demo Login
   // ==========================================
@@ -214,14 +210,14 @@ export default function LoginPage() {
 
       console.log(
         "API:",
-        `${API_URL}/api/auth/google/link-student`
+        "/api/auth/google/link-student"
       );
 
       // ==================================
       // ส่งข้อมูลไป Backend
       // ==================================
       const result = await fetch(
-        `${API_URL}/api/auth/google/link-student`,
+        "/api/auth/google/link-student",
         {
           method: "POST",
 
@@ -445,7 +441,7 @@ export default function LoginPage() {
 
       console.log(
         "API URL:",
-        API_URL
+        "/api"
       );
 
       console.log(
@@ -486,7 +482,7 @@ export default function LoginPage() {
             // ==================================
             const result =
               await fetch(
-                `${API_URL}/api/auth/google`,
+                "/api/auth/google",
                 {
                   method: "POST",
 
@@ -769,7 +765,6 @@ export default function LoginPage() {
     };
   }, [
     GOOGLE_CLIENT_ID,
-    API_URL,
     router,
   ]);
 

@@ -27,10 +27,6 @@ export default function StudentPage() {
   const [major, setMajor] = useState("");
   const [studentId, setStudentId] = useState("");
 
-  const API_URL =
-    process.env.NEXT_PUBLIC_API_URL ||
-    "http://127.0.0.1:8000";
-
   const fetchSuggestions = useCallback(async () => {
     try {
       setLoading(true);
@@ -73,7 +69,7 @@ export default function StudentPage() {
       // =====================================================
 
       const response = await fetch(
-        `${API_URL}/api/suggestions`,
+        "/api/suggestions",
         {
           method: "GET",
           cache: "no-store",
@@ -122,7 +118,7 @@ export default function StudentPage() {
     } finally {
       setLoading(false);
     }
-  }, [API_URL]);
+  }, []);
 
   // =====================================================
   // ตรวจสอบสิทธิ์ Login

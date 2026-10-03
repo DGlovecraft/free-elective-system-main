@@ -13,9 +13,6 @@ import {
 
 import DashboardLayout from "@/components/DashboardLayout";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
-
 type CategorySummary = {
   category: string;
   count: number;
@@ -42,8 +39,8 @@ export default function AnalysisPage() {
       setError("");
 
       const [categoriesRes, yearsRes] = await Promise.all([
-        fetch(`${API_URL}/api/dashboard/categories`),
-        fetch(`${API_URL}/api/dashboard/years`),
+        fetch("/api/dashboard/categories"),
+        fetch("/api/dashboard/years"),
       ]);
 
       if (!categoriesRes.ok || !yearsRes.ok) {

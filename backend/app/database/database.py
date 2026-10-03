@@ -1,3 +1,5 @@
+import os
+import tempfile
 from pathlib import Path
 
 from sqlalchemy import create_engine
@@ -6,7 +8,11 @@ from sqlalchemy.orm import declarative_base, sessionmaker
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 
-DATABASE_PATH = BASE_DIR / "data" / "free_elective.db"
+DATABASE_PATH = (
+    Path(tempfile.gettempdir()) / "free_elective.db"
+    if os.getenv("VERCEL") == "1"
+    else BASE_DIR / "data" / "free_elective.db"
+)
 
 DATABASE_URL = f"sqlite:///{DATABASE_PATH}"
 

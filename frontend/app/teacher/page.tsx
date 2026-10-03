@@ -14,9 +14,6 @@ import {
 
 import DashboardLayout from "@/components/DashboardLayout";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
-
 type Suggestion = {
   id: number;
   student_id: string;
@@ -72,10 +69,10 @@ export default function TeacherPage() {
         yearsRes,
         categoryYearsRes,
       ] = await Promise.all([
-        fetch(`${API_URL}/api/suggestions`),
-        fetch(`${API_URL}/api/dashboard/categories`),
-        fetch(`${API_URL}/api/dashboard/years`),
-        fetch(`${API_URL}/api/dashboard/category-years`),
+        fetch("/api/suggestions"),
+        fetch("/api/dashboard/categories"),
+        fetch("/api/dashboard/years"),
+        fetch("/api/dashboard/category-years"),
       ]);
 
       if (

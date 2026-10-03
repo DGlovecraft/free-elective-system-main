@@ -11,10 +11,6 @@ import { useRouter } from "next/navigation";
 
 import DashboardLayout from "@/components/DashboardLayout";
 
-const API_URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "http://127.0.0.1:8000";
-
 const DEMO_STUDENT_IDS = [
   "65000001",
   "65000002",
@@ -265,7 +261,7 @@ export default function StudentSuggestionPage() {
 
       const predictionResponse =
         await fetch(
-          `${API_URL}/api/predict`,
+          "/api/predict",
           {
             method: "POST",
             headers: {
@@ -316,7 +312,7 @@ export default function StudentSuggestionPage() {
 
       const suggestionResponse =
         await fetch(
-          `${API_URL}/api/suggestions`,
+          "/api/suggestions",
           {
             method: "POST",
             headers: {
